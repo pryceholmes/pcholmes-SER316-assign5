@@ -1,0 +1,83 @@
+plugins {
+    id "com.github.spotbugs" version "5.0.12"
+    id "checkstyle"
+}
+apply plugin: 'application'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+
+
+mainClassName = 'main/java/Start'
+
+compileJava.options.encoding = 'UTF-8'
+
+// Repositories and dependencies for code go here
+repositories {
+    mavenCentral()
+    jcenter();
+}
+
+dependencies {
+    implementation "junit:junit:4.12"
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+sourceSets{
+    main.java.srcDirs = ['src']
+    main.resources.srcDirs = ['src/main/resources']
+
+}
+
+
+///////////////////////////////////////////////////////////////////////
+// Configure Checkstyle
+/////////////////////////////////////////////////////////////////////
+checkstyle {
+    // Keep checkstyle a little quieter
+    ignoreFailures = true
+    showViolations = false
+}
+
+tasks.withType(Checkstyle).configureEach {
+
+    reports {
+        html.enabled = true
+        xml.enabled = false
+    }
+}
+
+checkstyle {
+    toolVersion = "8.8"
+}
+
+///////////////////////////////////////////////////////////////////////
+// Configure SpotBugs
+///////////////////////////////////////////////////////////////////////
+// To generate an HTML report instead of XML
+spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+spotbugs {
+    ignoreFailures = true
+    showProgress = true
+    effort = 'max'
+}
