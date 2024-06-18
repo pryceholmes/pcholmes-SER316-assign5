@@ -7,7 +7,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'jacoco'
 
 
-mainClassName = 'main/java/Start'
+mainClassName = 'Main'
 
 compileJava.options.encoding = 'UTF-8'
 
@@ -39,7 +39,7 @@ jacocoTestReport {
 }
 
 sourceSets{
-    main.java.srcDirs = ['src']
+    main.java.srcDirs = ['src/main/java']
     main.resources.srcDirs = ['src/main/resources']
 
 }
