@@ -6,6 +6,7 @@ public class Fighter implements PlayerCharacter {
     private int attackPoints;
     private int defensePoints;
     private int healPoints;
+    private int speed;
     private int health;
     private int MAX_HEALTH;
     private int exp;
@@ -60,6 +61,16 @@ public class Fighter implements PlayerCharacter {
     @Override
     public void setHealPoints(int healPoints) {
         this.healPoints = healPoints;
+    }
+
+    @Override
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    @Override
+    public int getSpeed() {
+        return speed;
     }
 
     @Override

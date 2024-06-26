@@ -39,6 +39,18 @@ public interface PlayerCharacter {
     public void setHealPoints(int healPoints);
 
     /**
+     * get this character's speed
+     * @return speed
+     */
+    public int getSpeed();
+
+    /**
+     * set this character's speed
+     * @param speed the speed to set
+     */
+    public void setSpeed(int speed);
+
+    /**
      * get this character's health
      * @return health
      */
