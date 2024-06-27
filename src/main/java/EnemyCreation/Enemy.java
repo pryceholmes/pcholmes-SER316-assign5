@@ -1,9 +1,10 @@
 package EnemyCreation;
 
+import Actions.*;
+
 abstract public class Enemy {
     private int attackPoints;
     private int defensePoints;
-    private int healPoints;
     private int speed;
     private int health;
     private int MAX_HEALTH;
@@ -33,18 +34,6 @@ abstract public class Enemy {
      * @param defensePoints the defensePoints to set
      */
     public void setDefensePoints(int defensePoints) {this.defensePoints = defensePoints;}
-
-    /**
-     * get this enemy's heal points
-     * @return healPoints
-     */
-    public int getHealPoints() {return healPoints;}
-
-    /**
-     * set this enemy's heal points
-     * @param healPoints the healPoints to set
-     */
-    public void setHealPoints(int healPoints) {this.healPoints = healPoints;}
 
     /**
      * get this enemy's speed
@@ -85,28 +74,29 @@ abstract public class Enemy {
     /**
      * attack a character
      */
-    abstract public void attack();
+    abstract public Attack attack();
 
     /**
      * defend against a character
      */
-    abstract public void defend();
+    abstract public Defense defend();
 
     /**
      * heal this enemy
      */
-    abstract public void heal();
+    abstract public Heal heal();
 
     /**
-     * take damage
+     * take damage, return 1 if dead, 0 if alive
      * @param damage the damage to take
+     * @return 1 if dead, 0 if alive
      */
-    abstract public void takeDamage(int damage);
+    abstract public int takeDamage(int damage);
 
     /**
      * do a skill
      */
-    abstract public void doSkill();
+    abstract public Action doSkill();
 
 
 
