@@ -25,6 +25,9 @@ public class Fighter implements PlayerCharacter {
         // initialize the heal points to 15 for a fighter
         healPoints = 15;
 
+        // initialize the speed to 10 for a fighter
+        speed = 10;
+
         // initialize the Max health to 100 for a fighter
         MAX_HEALTH = 100;
         health = MAX_HEALTH;
