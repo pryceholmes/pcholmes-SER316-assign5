@@ -1,158 +1,63 @@
 package CharacterCreation;
 
-public class Healer implements PlayerCharacter {
+import Actions.*;
 
-    private int attackPoints;
-    private int defensePoints;
-    private int healPoints;
-    private int speed;
-    private int health;
-    private int MAX_HEALTH;
-    private int exp;
-    private int level;
+import java.util.Random;
+
+public class Healer extends PlayerCharacter {
 
     //TODO add a character type
 
     public Healer() {
         // initialize the attack points to 15 for a healer
-        attackPoints = 15;
+        this.setAttackPoints(15);
 
         // initialize the defense points to 25 for a healer
-        defensePoints = 15;
+        this.setDefensePoints(25);
 
         // initialize the heal points to 25 for a healer
-        healPoints = 25;
+        this.setHealPoints(25);
 
         // initialize the Max health to 100 for a healer
-        MAX_HEALTH = 115;
-        health = MAX_HEALTH;
+        this.setMaxHealth(100);
+        this.setHealth(this.getMaxHealth());
 
         // initialize the experience to 0 for a healer
-        exp = 0;
-    }
-
-    @Override
-    public int getAttackPoints() {
-        return attackPoints;
-    }
-
-    @Override
-    public void setAttackPoints(int attackPoints) {
-        this.attackPoints = attackPoints;
-    }
-
-    @Override
-    public int getDefensePoints() {
-        return defensePoints;
-    }
-
-    @Override
-    public void setDefensePoints(int defensePoints) {
-        this.defensePoints = defensePoints;
-    }
-
-    @Override
-    public int getHealPoints() {
-        return healPoints;
-    }
-
-    @Override
-    public void setHealPoints(int healPoints) {
-        this.healPoints = healPoints;
-    }
-
-    @Override
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    @Override
-    public int getSpeed() {
-        return speed;
-    }
-
-    @Override
-    public int getHealth() {
-        return health;
-    }
-
-    @Override
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    @Override
-    public int getMAX_HEALTH() {
-        return MAX_HEALTH;
-    }
-
-    @Override
-    public void setMAX_HEALTH(int MAX_HEALTH) {
-        this.MAX_HEALTH = MAX_HEALTH;
-    }
-
-    @Override
-    public int getExp() {
-        return exp;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
-    public void setLevel(int level) {
-        this.level = level;
+        this.setExp(0);
     }
 
     @Override
     public void levelUp() {
         // increase the attack points by 5
-        attackPoints += 5;
+        this.setAttackPoints(this.getAttackPoints() + 5);
 
         // increase the defense points by 5
-        defensePoints += 5;
+        this.setDefensePoints(this.getDefensePoints() + 5);
 
         // increase the heal points by 8
-        healPoints += 8;
+        this.setHealPoints(this.getHealPoints() + 8);
 
         // increase the max health by 15
-        MAX_HEALTH += 15;
-        health = MAX_HEALTH;
+        this.setMaxHealth(this.getMaxHealth() + 15);
+        this.setHealth(this.getMaxHealth());
     }
 
+    /**
+     * Healer's skill is a 25% chance to heal to 1.5 max health. If it misses, a normal heal action is done.
+     *
+     * @return the heal action done.
+     */
     @Override
-    public void gainExp(int exp) {
-        this.exp += exp;
-        if (this.exp >= 100) {
-            levelUp();
-            this.exp = 0;
+    public Action doSkill() {
+        Random rand = new Random();
+        int chance = rand.nextInt(100);
+        int healAmount;
+        if (chance < 25) {
+            healAmount = (int) (this.getMaxHealth() * 1.5) - this.getHealth();
+            this.setHealth((int) (this.getMaxHealth() * 1.5));
+            return new Heal(healAmount, "Player heals by " + healAmount + " health points using a skill");
+        } else {
+            return super.heal();
         }
-    }
-
-    @Override
-    public void attack() {
-        System.out.println("Healer attacks");
-    }
-
-    @Override
-    public void defend() {
-        System.out.println("Healer defends");
-    }
-
-    @Override
-    public void heal() {
-        System.out.println("Healer heals themself");
-    }
-
-    @Override
-    public void takeDamage(int damage) {
-        System.out.println("Healer takes damage");
-    }
-
-    @Override
-    public void doSkill() {
-        System.out.println("Healer heals themself to 1.5x MAXHEALTH");
     }
 }

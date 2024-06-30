@@ -64,18 +64,16 @@ public class MediumEnemy extends Enemy {
     }
 
     /**
-     * The medium enemy's skill is to defend with a 75% chance of 2x defense
+     * The medium enemy's skill is to attack with a 50% chance of 1.75x damage.
      */
     @Override
     public Action doSkill() {
         Random rand = new Random();
         int chance = rand.nextInt(100);
-        if (chance < 75) {
-            return new Defense((this.getDefensePoints() * 2),
-                    "Medium enemy uses a skill! Their skill defends with 2x defense!");
+        if (chance < 50) {
+            return new Attack((int) (this.getAttackPoints() * 1.75), "Medium enemy uses skill and attacks with 1.75x damage!");
         } else {
-            return new Defense(0,
-                    "Medium Enemy uses a skill and tried to use a defense but missed!");
+            return new Attack(this.getAttackPoints(), "Medium enemy uses skill and attacks with normal damage!");
         }
 
     }

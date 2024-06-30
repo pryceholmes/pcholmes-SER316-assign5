@@ -1,14 +1,15 @@
-package States;
+/*package States;
 
-public class Cycle2 {
+public class Cycle2 extends State{
 
     /**
-     * Method to handle the player's encounter with an enemy.
-     * Encounters can be different depending on what cycle the game is in.
+     * Method to handle a single turn pair in the game.
+     * In cycle 1, both player and enemy attacks have a 5% increase in defense points.
      */
-    public void enemyEncounter() {
-        System.out.println("You have encountered an enemy in cycle 2!");
-        //TODO: Implement enemy encounter for cycle 2 (increased defense)
+    /*@Override
+    public void simulateTurn() {
+
     }
 }
 
+*/

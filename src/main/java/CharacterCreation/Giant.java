@@ -1,157 +1,84 @@
 package CharacterCreation;
 
-public class Giant implements PlayerCharacter {
-    private int attackPoints;
-    private int defensePoints;
-    private int healPoints;
-    private int speed;
-    private int health;
-    private int MAX_HEALTH;
-    private int exp;
-    private int level;
+import Actions.*;
 
+import java.util.Random;
+
+public class Giant extends PlayerCharacter {
     //TODO add a character type
 
+    int cooldown = 0;
+
     public Giant() {
-        // initialize the attack points to 25 for a healer
-        attackPoints = 25;
+        // initialize the attack points to 25 for a giant
+        this.setAttackPoints(25);
 
-        // initialize the defense points to 25 for a healer
-        defensePoints = 25;
+        // initialize the defense points to 25 for a giant
+        this.setDefensePoints(25);
 
-        // initialize the heal points to 5 for a healer
-        healPoints = 5;
+        // initialize the heal points to 5 for a giant
+        this.setHealPoints(5);
 
-        // initialize the Max health to 150 for a healer
-        MAX_HEALTH = 150;
-        health = MAX_HEALTH;
+        // initialize the Max health to 150 for a giant
+        this.setMaxHealth(150);
+        this.setHealth(this.getMaxHealth());
 
-        // initialize the experience to 0 for a healer
-        exp = 0;
+        // initialize the experience to 0 for a giant
+        this.setExp(0);
     }
 
     @Override
-    public int getAttackPoints() {
-        return attackPoints;
+    public Attack attack() {
+        checkCooldown();
+        return super.attack();
     }
 
     @Override
-    public void setAttackPoints(int attackPoints) {
-        this.attackPoints = attackPoints;
+    public Defense defend() {
+        checkCooldown();
+        return super.defend();
     }
 
     @Override
-    public int getDefensePoints() {
-        return defensePoints;
-    }
-
-    @Override
-    public void setDefensePoints(int defensePoints) {
-        this.defensePoints = defensePoints;
-    }
-
-    @Override
-    public int getHealPoints() {
-        return healPoints;
-    }
-
-    @Override
-    public void setHealPoints(int healPoints) {
-        this.healPoints = healPoints;
-    }
-
-    @Override
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    @Override
-    public int getSpeed() {
-        return speed;
-    }
-
-    @Override
-    public int getHealth() {
-        return health;
-    }
-
-    @Override
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    @Override
-    public int getMAX_HEALTH() {
-        return MAX_HEALTH;
-    }
-
-    @Override
-    public void setMAX_HEALTH(int MAX_HEALTH) {
-        this.MAX_HEALTH = MAX_HEALTH;
-    }
-
-    @Override
-    public int getExp() {
-        return exp;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
-    public void setLevel(int level) {
-        this.level = level;
+    public Heal heal() {
+        checkCooldown();
+        return super.heal();
     }
 
     @Override
     public void levelUp() {
         // increase the attack points by 7
-        attackPoints += 7;
+        this.setAttackPoints(this.getAttackPoints() + 7);
 
         // increase the defense points by 7
-        defensePoints += 7;
+        this.setDefensePoints(this.getDefensePoints() + 7);
 
         // increase the heal points by 2
-        healPoints += 2;
+        this.setHealPoints(this.getHealPoints() + 2);
 
         // increase the max health by 10
-        MAX_HEALTH += 10;
-        health = MAX_HEALTH;
+        this.setMaxHealth(this.getMaxHealth() + 10);
+        this.setHealth(this.getMaxHealth());
     }
 
+    /**
+     * The giant's skill is to rage, increasing attack by 25% and defense by 25% for two turns.
+     */
     @Override
-    public void gainExp(int exp) {
-        this.exp += exp;
-        if (this.exp >= 100) {
-            levelUp();
-            this.exp = 0;
+    public Action doSkill() {
+        cooldown = 2;
+        this.setAttackPoints((int) (this.getAttackPoints() * 1.25));
+        this.setDefensePoints((int) (this.getDefensePoints() * 1.25));
+        return new Attack(0, "Giant rages, increasing attack and defense by 25% for two turns.");
+    }
+
+    public void checkCooldown() {
+        if (cooldown > 0) {
+            cooldown--;
+            if (cooldown == 0) {
+                this.setAttackPoints((int) (this.getAttackPoints() / 1.25));
+                this.setDefensePoints((int) (this.getDefensePoints() / 1.25));
+            }
         }
-    }
-
-    @Override
-    public void attack() {
-        System.out.println("Giant attacks");
-    }
-
-    @Override
-    public void defend() {
-        System.out.println("Giant defends");
-    }
-
-    @Override
-    public void heal() {
-        System.out.println("Giant heals themself");
-    }
-
-    @Override
-    public void takeDamage(int damage) {
-        System.out.println("Giant takes damage");
-    }
-
-    @Override
-    public void doSkill() {
-        System.out.println("Giant rages, attack +15 and defense +10 for 3 turns");
     }
 }
