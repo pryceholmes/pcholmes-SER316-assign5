@@ -1,13 +1,13 @@
-package Actions;
+package actions;
 
 public class Attack extends Action {
     /**
-     * The amount of damage the attack will do
+     * The amount of damage the attack will do.
      */
     private int attackAmount;
 
     /**
-     * Constructor for the Attack class
+     * Constructor for the Attack class.
      * @param attackAmount the amount of damage
      * @param message the message to be displayed
      */
@@ -17,7 +17,7 @@ public class Attack extends Action {
     }
 
     /**
-     * Get the amount of damage the attack will do
+     * Get the amount of damage the attack will do.
      * @return the amount of damage
      */
     public int getAttackAmount() {
@@ -25,7 +25,7 @@ public class Attack extends Action {
     }
 
     /**
-     * Set the amount of damage the attack will do
+     * Set the amount of damage the attack will do.
      * @param attackAmount the amount of damage
      */
     public void setAttackAmount(int attackAmount) {

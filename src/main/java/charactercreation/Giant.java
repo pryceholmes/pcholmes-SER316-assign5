@@ -1,15 +1,21 @@
-package CharacterCreation;
+package charactercreation;
 
-import Actions.*;
-
+import actions.Action;
+import actions.Attack;
+import actions.Defense;
+import actions.Heal;
 import java.util.Random;
 
+/**
+ * The Giant class is a concrete class that represents a Giant character in the game (Factory Pattern).
+ */
 public class Giant extends PlayerCharacter {
-    //TODO add a character type
 
-    int cooldown = 0;
-
-    public Giant() {
+    /**
+     * Constructor for Giant class.
+     * @param rand Random Object Generator
+     */
+    public Giant(Random rand) {
         // initialize the attack points to 25 for a giant
         this.setAttackPoints(25);
 
@@ -23,30 +29,36 @@ public class Giant extends PlayerCharacter {
         this.setMaxHealth(150);
         this.setHealth(this.getMaxHealth());
 
+        // initialize the speed to 5 for a giant
+        this.setSpeed(5);
+
         // initialize the experience to 0 for a giant
         this.setExp(0);
+
+        // Set the random Object
+        this.rand = rand;
     }
 
     @Override
     public Attack attack() {
-        checkCooldown();
         return super.attack();
     }
 
     @Override
     public Defense defend() {
-        checkCooldown();
         return super.defend();
     }
 
     @Override
     public Heal heal() {
-        checkCooldown();
         return super.heal();
     }
 
     @Override
     public void levelUp() {
+        // increase the level by 1
+        this.setLevel(this.getLevel() + 1);
+
         // increase the attack points by 7
         this.setAttackPoints(this.getAttackPoints() + 7);
 
@@ -56,29 +68,25 @@ public class Giant extends PlayerCharacter {
         // increase the heal points by 2
         this.setHealPoints(this.getHealPoints() + 2);
 
+        // increase the speed by 5
+        this.setSpeed(this.getSpeed() + 5);
+
         // increase the max health by 10
         this.setMaxHealth(this.getMaxHealth() + 10);
         this.setHealth(this.getMaxHealth());
+
+        this.setExp(0);
+
     }
 
     /**
-     * The giant's skill is to rage, increasing attack by 25% and defense by 25% for two turns.
+     * The giant's skill is to rage, attacking with 3x damage.
      */
     @Override
     public Action doSkill() {
-        cooldown = 2;
-        this.setAttackPoints((int) (this.getAttackPoints() * 1.25));
-        this.setDefensePoints((int) (this.getDefensePoints() * 1.25));
-        return new Attack(0, "Giant rages, increasing attack and defense by 25% for two turns.");
+        Attack temp = super.attack();
+        temp.setAttackAmount(temp.getAttackAmount() * 3);
+        return temp;
     }
 
-    public void checkCooldown() {
-        if (cooldown > 0) {
-            cooldown--;
-            if (cooldown == 0) {
-                this.setAttackPoints((int) (this.getAttackPoints() / 1.25));
-                this.setDefensePoints((int) (this.getDefensePoints() / 1.25));
-            }
-        }
-    }
 }

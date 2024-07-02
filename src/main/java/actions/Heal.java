@@ -1,13 +1,13 @@
-package Actions;
+package actions;
 
-public class Heal extends Action{
+public class Heal extends Action {
     /**
-     * The amount of health the heal will restore
+     * The amount of health the heal will restore.
      */
     private int healAmount;
 
     /**
-     * Constructor for the Heal class
+     * Constructor for the Heal class.
      * @param healAmount the amount of health
      * @param message the message to be displayed
      */
@@ -17,7 +17,7 @@ public class Heal extends Action{
     }
 
     /**
-     * Get the amount of health the heal will restore
+     * Get the amount of health the heal will restore.
      * @return the amount of health
      */
     public int getHealAmount() {
@@ -25,7 +25,7 @@ public class Heal extends Action{
     }
 
     /**
-     * Set the amount of health the heal will restore
+     * Set the amount of health the heal will restore.
      * @param healAmount the amount of health
      */
     public void setHealAmount(int healAmount) {

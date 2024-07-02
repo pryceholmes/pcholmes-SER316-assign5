@@ -1,15 +1,27 @@
-package CharacterCreation;
+/**
+ * This file contains the Fighter class which is a subclass of PlayerCharacter.
+ * The Fighter class is a concrete class that represents a Fighter character in the game.
+ * (Factory Pattern)
+ *
+ * @author Pryce Holmes
+ * @version 7/2/2024
+ */
 
-import Actions.*;
+package charactercreation;
 
-
+import actions.Action;
+import actions.Attack;
 import java.util.Random;
 
+/**
+ * The Fighter class is a concrete class that represents a Fighter character in the game (Factory Pattern).
+ */
 public class Fighter extends PlayerCharacter {
 
-    // TODO: Add a character type
-
-    public Fighter() {
+    /**
+     * Constructor for the Fighter class.
+     */
+    public Fighter(Random rand) {
         // initialize the attack points to 25 for a fighter
         this.setAttackPoints(25);
 
@@ -28,6 +40,8 @@ public class Fighter extends PlayerCharacter {
 
         // initialize the experience to 0 for a fighter
         this.setExp(0);
+
+        this.rand = rand;
     }
 
     @Override
@@ -44,9 +58,14 @@ public class Fighter extends PlayerCharacter {
         // increase the heal points by 5
         this.setHealPoints(this.getHealPoints() + 5);
 
+        // increase the speed by 5
+        this.setSpeed(this.getSpeed() + 5);
+
         // increase the max health by 15
         this.setMaxHealth(this.getMaxHealth() + 15);
         this.setHealth(this.getMaxHealth());
+
+        this.setExp(0);
     }
 
     /**
@@ -55,14 +74,16 @@ public class Fighter extends PlayerCharacter {
      */
     @Override
     public Action doSkill() {
-        Random rand = new Random();
         int chance = rand.nextInt(100);
         if (chance < 25) {
             return new Attack((this.getAttackPoints() * 2),
                     "Player uses a skill! Their skill dealt an attack with 2x damage!");
         } else {
-            return new Attack(0,
-                    "Player uses a skill and tried to deal an attack but missed!");
+            Attack temp = super.attack();
+            return new Attack(temp.getAttackAmount(),
+                    "Player uses a skill, but missed."
+                            + " A normal attack was dealt instead with "
+                            + temp.getAttackAmount() + " attack points!");
         }
     }
 }

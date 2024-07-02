@@ -1,53 +1,60 @@
-package CharacterCreation;
+package charactercreation;
 
-import Actions.*;
-
+import actions.Action;
+import actions.Attack;
+import actions.Defense;
+import actions.Heal;
 import java.util.Random;
 
 
-abstract public class PlayerCharacter {
+public abstract class PlayerCharacter {
     /**
-     * This character's attack points
+     * This character's attack points.
      */
     private int attackPoints;
 
     /**
-     * This character's defense points
+     * This character's defense points.
      */
     private int defensePoints;
 
     /**
-     * This character's heal points
+     * This character's heal points.
      */
     private int healPoints;
 
     /**
-     * This character's speed
+     * This character's speed.
      */
     private int speed;
 
     /**
-     * This character's health
+     * This character's health.
      */
     private int health;
 
     /**
-     * This character's maximum health
+     * This character's maximum health.
      */
-    private int MAX_HEALTH;
+    private int maxHealth;
 
     /**
-     * This character's experience points
+     * This character's experience points.
      */
     private int exp;
 
     /**
-     * This character's level
+     * This character's level.
      */
     private int level;
 
     /**
-     * get this character's attack points
+     * Random object for random number generation.
+     */
+    protected Random rand;
+
+    /**
+     * get this character's attack points.
      * @return attackPoints
      */
     public int getAttackPoints() {
@@ -55,7 +62,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's attack points
+     * set this character's attack points.
      * @param attackPoints the attackPoints to set
      */
     public void setAttackPoints(int attackPoints) {
@@ -63,7 +70,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * get this character's defense points
+     * get this character's defense points.
      * @return defensePoints
      */
     public int getDefensePoints() {
@@ -71,7 +78,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's defense points
+     * set this character's defense points.
      * @param defensePoints the defensePoints to set
      */
     public void setDefensePoints(int defensePoints) {
@@ -79,7 +86,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * get this character's heal points
+     * get this character's heal points.
      * @return healPoints
      */
     public int getHealPoints() {
@@ -87,7 +94,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's heal points
+     * set this character's heal points.
      * @param healPoints the healPoints to set
      */
     public void setHealPoints(int healPoints) {
@@ -95,7 +102,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's speed
+     * set this character's speed.
      * @param speed the speed to set
      */
     public void setSpeed(int speed) {
@@ -103,7 +110,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * get this character's speed
+     * get this character's speed.
      * @return speed
      */
     public int getSpeed() {
@@ -111,7 +118,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * get this character's health
+     * get this character's health.
      * @return health
      */
     public int getHealth() {
@@ -119,7 +126,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's health
+     * set this character's health.
      * @param health the health to set
      */
     public void setHealth(int health) {
@@ -127,23 +134,23 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * get this character's max health
+     * get this character's max health.
      * @return MAX_HEALTH
      */
     public int getMaxHealth() {
-        return MAX_HEALTH;
+        return maxHealth;
     }
 
     /**
-     * set this character's max health
-     * @param MaxHealth the MAX_HEALTH to set
+     * set this character's max health.
+     * @param maxHealth the MAX_HEALTH to set
      */
-    public void setMaxHealth(int MaxHealth) {
-        this.MAX_HEALTH = MaxHealth;
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
 
     /**
-     * get this character's experience points
+     * get this character's experience points.
      * @return exp
      */
     public int getExp() {
@@ -151,7 +158,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's experience points
+     * set this character's experience points.
      * @param exp the exp to set
      */
     protected void setExp(int exp) {
@@ -159,7 +166,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * gain experience points
+     * gain experience points.
      * @param exp the exp to set
      */
     public void gainExp(int exp) {
@@ -177,7 +184,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * get this character's level
+     * get this character's level.
      * @return level
      */
     public int getLevel() {
@@ -185,7 +192,7 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * set this character's level
+     * set this character's level.
      * @param level the level to set
      */
     public void setLevel(int level) {
@@ -193,16 +200,15 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * level up this character
+     * level up this character.
      */
-    abstract public void levelUp();
+    public abstract void levelUp();
 
     /**
-     * attack an enemy
+     * attack an enemy.
      * @return the attack
      */
     public Attack attack() {
-        Random rand = new Random();
         int attackAmount = rand.nextInt(this.getAttackPoints()) + 1;
         if (attackAmount < this.getAttackPoints() * 0.10) {
             attackAmount = 0;
@@ -210,26 +216,27 @@ abstract public class PlayerCharacter {
         if (attackAmount == 0) {
             return new Attack(attackAmount, "Player attacks but misses!");
         }
-        String message = "Player attacks with + " + attackAmount + " attack points!";
+        String message = "Player attacks with " + attackAmount + " attack points!";
         return new Attack(attackAmount, message);
     }
 
     /**
-     * defend against an enemy
+     * defend against an enemy.
      * @return the defense
      */
     public Defense defend() {
-        Random rand = new Random();
         int defenseAmount = rand.nextInt(this.getDefensePoints()) + 1;
-        return new Defense(defenseAmount, "Player defends with " + defenseAmount + " defense points!");
+        return new Defense(defenseAmount, "Player defends with "
+                + defenseAmount + " defense points!");
     }
 
     /**
-     * heal this character
+     * heal this character.
      * @return the heal object
      */
     public Heal heal() {
-        Random rand = new Random();
+        // Requirement 9: Healing should never give more Heath that you have as a maximum.
+
         int healAmount;
         try {
             healAmount = rand.nextInt(this.getMaxHealth() - this.getHealth()) + 1;
@@ -237,11 +244,12 @@ abstract public class PlayerCharacter {
             healAmount = 0;
         }
         this.setHealth(this.getHealth() + healAmount);
-        return new Heal(healAmount, "Player heals by " + healAmount + " health points");
+        return new Heal(healAmount, "Player heals by "
+                + healAmount + " health points");
     }
 
     /**
-     * take damage
+     * take damage.
      * @param damage the damage to take
      * @return 1 if the character is dead, 0 otherwise
      */
@@ -260,10 +268,10 @@ abstract public class PlayerCharacter {
     }
 
     /**
-     * do a skill
+     * do a skill.
      * @return the action
      */
-    abstract public Action doSkill();
+    public abstract Action doSkill();
 
 
 
