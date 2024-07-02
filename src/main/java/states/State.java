@@ -73,9 +73,7 @@ public abstract class State {
                     System.out.println("Player wins the battle!");
                     finished = true;
                     returnResult = 0;
-                }
-                // Player loses
-                else if (result == 2) {
+                } else if (result == 2) { // Player loses
                     System.out.println("Player loses the battle!");
                     finished = true;
                     returnResult = 1;
@@ -88,9 +86,7 @@ public abstract class State {
                     System.out.println("Player wins the battle!");
                     finished = true;
                     returnResult = 0;
-                }
-                // Player loses
-                else if (result == 2) {
+                } else if (result == 2) { // Player loses
                     System.out.println("Player loses the battle!");
                     finished = true;
                     returnResult = 1;

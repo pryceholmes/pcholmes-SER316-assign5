@@ -5,7 +5,8 @@ import actions.Heal;
 import java.util.Random;
 
 /**
- * The Healer class is a concrete class that represents a Healer character in the game (Factory Pattern).
+ * The Healer class is a concrete class
+ * that represents a Healer character in the game (Factory Pattern).
  */
 public class Healer extends PlayerCharacter {
 

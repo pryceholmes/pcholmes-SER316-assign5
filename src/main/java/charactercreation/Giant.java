@@ -7,7 +7,8 @@ import actions.Heal;
 import java.util.Random;
 
 /**
- * The Giant class is a concrete class that represents a Giant character in the game (Factory Pattern).
+ * The Giant class is a concrete class
+ * that represents a Giant character in the game (Factory Pattern).
  */
 public class Giant extends PlayerCharacter {
 

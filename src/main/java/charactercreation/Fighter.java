@@ -14,7 +14,8 @@ import actions.Attack;
 import java.util.Random;
 
 /**
- * The Fighter class is a concrete class that represents a Fighter character in the game (Factory Pattern).
+ * The Fighter class is a concrete class
+ * that represents a Fighter character in the game (Factory Pattern).
  */
 public class Fighter extends PlayerCharacter {
 
