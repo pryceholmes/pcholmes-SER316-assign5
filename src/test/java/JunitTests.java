@@ -563,6 +563,15 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle1(rand);
         int result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -572,6 +581,13 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle1(rand);
         int result = cycle.simulateEnemyTurn(fighter, enemy);
+        cycle.simulateEnemyTurn(fighter, enemy);
+        cycle.simulateEnemyTurn(fighter, enemy);
+        cycle.simulateEnemyTurn(fighter, enemy);
+        cycle.simulateEnemyTurn(fighter, enemy);
+        cycle.simulateEnemyTurn(fighter, enemy);
+        cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -581,6 +597,14 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle2(rand);
         int result = cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -590,6 +614,15 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle2(rand);
         int result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -599,6 +632,15 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle3(rand);
         int result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -608,6 +650,15 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle3(rand);
         int result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -617,6 +668,16 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle4(rand);
         int result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
+        result = cycle.simulatePlayerTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
     }
 
@@ -626,7 +687,41 @@ public class JunitTests {
         Enemy enemy = new EasyEnemyCreator().createEnemy(0, rand);
         State cycle = new Cycle4(rand);
         int result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
+        result = cycle.simulateEnemyTurn(fighter, enemy);
         assert(result == 0 || result == 1 || result == 2);
+    }
+
+    @Test
+    public void testEnemyEncounter() {
+        PlayerCharacter fighter = new FighterCreator().createCharacter(rand);
+        State cycle = new Cycle1(rand);
+        int result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        result = cycle.enemyEncounter(0, fighter);
+        assert(result == 0 || result == 1 || result == 2);
+    }
+
+    @Test
+    public void testMain() { // not required
+        Main.main(null);
     }
 
 }
