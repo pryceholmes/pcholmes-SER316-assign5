@@ -22,11 +22,4 @@ public class Action {
         return message;
     }
 
-    /**
-     * Set the message that will be displayed when the action is used.
-     * @param message the message
-     */
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

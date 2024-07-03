@@ -42,6 +42,9 @@ public class Fighter extends PlayerCharacter {
         // initialize the experience to 0 for a fighter
         this.setExp(0);
 
+        // set level to 0 for a fighter
+        this.setLevel(0);
+
         this.rand = rand;
     }
 
