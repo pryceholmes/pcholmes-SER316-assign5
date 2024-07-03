@@ -21,3 +21,19 @@ implement my game this way and use the mediator pattern for communication betwee
 Design pattern 3: Factory pattern. To create the characters in different classes such as a fighter or mage or thief, I could use
 the factory pattern to create the character like described in the lecture videos. This would allow us to create different types
 of characters without a mess of conditionals and constructor calls. 
+
+
+/////////////////////////////////////// ASSIGNMENT 5B ///////////////////////////////////////
+This section is written as of 5B. The 3 design patterns I have decided to implement are the factory pattern, the state pattern
+and the singleton pattern. I used the factory pattern for the creation of player characters and enemies. All the research I 
+did on the factory pattern came from the refactoring guru website and the lecture videos. I used the factory pattern to create 
+player and enemy creators that create concrete player and enemy objects based off of an interface. These classes can be found in
+the player creation and enemy creation packages. I used the state pattern to create cycles that the game runs in. The functionality for
+the battles are in the cycle classes, and we switch between the cycles every 5 floors. This acts like a state machine, so depending
+on what cycle we are in, the game will behave differently. The research I did on the state pattern came from the refactoring guru
+website's design catalog. Lastly I used the singleton pattern to create a file called enemy constants that holds information for 
+creating enemies. The file holds a hashmap that holds creation values for the enemy creation, and only one instance of this file
+can exist. The research I did on the singleton pattern came from the refactoring guru website.
+
+CheckStyle and Spotbugs: 
+
