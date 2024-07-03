@@ -35,5 +35,15 @@ website's design catalog. Lastly I used the singleton pattern to create a file c
 creating enemies. The file holds a hashmap that holds creation values for the enemy creation, and only one instance of this file
 can exist. The research I did on the singleton pattern came from the refactoring guru website.
 
-CheckStyle and Spotbugs: 
+Spotbugs: 
+There are 5 warnings because I am passing a rand object to each of my classes. This is because I was also getting a warning when I didn't for only using rand one time and throwing it away and it told me to reuse the same one. I searched a lot of google regarding this issue and found that it does not apply to my program because rand will not give away any internal representation details. It is also not important to the game, and is only used to simulate user inputs since the game must be automated for grading. Due to this, I did not get these warnings fixed but all other spotbugs errors were identified and fixed. 
 
+ScreenShots: 
+
+<img width="1436" alt="Screenshot 2024-07-03 at 4 06 42 PM" src="https://github.com/pryceholmes/pcholmes-SER316-assign5/assets/113060481/167dd27d-6968-46d3-995d-3cd6625dfcc8">
+<img width="560" alt="Screenshot 2024-07-03 at 4 06 19 PM" src="https://github.com/pryceholmes/pcholmes-SER316-assign5/assets/113060481/0540ba1e-cec3-4399-ac10-1013981ded94">
+<img width="1027" alt="Screenshot 2024-07-03 at 4 05 52 PM" src="https://github.com/pryceholmes/pcholmes-SER316-assign5/assets/113060481/2874e167-44bc-4e09-90d6-77634932b162">
+<img width="1099" alt="Screenshot 2024-07-03 at 4 07 04 PM" src="https://github.com/pryceholmes/pcholmes-SER316-assign5/assets/113060481/00875313-9756-4aea-ab6f-709407b3f538">
+
+Screencast: 
+https://www.youtube.com/watch?v=9bhxVdbuc90
